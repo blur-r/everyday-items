@@ -1,8 +1,10 @@
+import Header from "../components/Header"
+
 function Home() {
     return (
-        <>
-            <h1 className="text-[red]">Home!!</h1>
-        </>
+        <div>
+            <Header />
+        </div>
     )
 }
 
