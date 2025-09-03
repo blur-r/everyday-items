@@ -1,8 +1,9 @@
 import Header from "../components/Header"
 import Search from "../components/Search"
 import ProductCard from "../components/ProductCard"
+import Footer from "../components/Footer";
 
-function Home() {
+const Home: React.FC = () => {
     return (
         <div>
             <Header />
@@ -23,6 +24,7 @@ function Home() {
                 <ProductCard />
                 <ProductCard />
             </div>
+            <Footer />
         </div>
     )
 }

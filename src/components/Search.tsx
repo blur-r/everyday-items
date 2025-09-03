@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Search() {
+const Search: React.FC = () => {
     const [filterDropdown, setFilterDropdown] = useState(false)
     const [categoriesDropdown, setCategoriesDropdown] = useState(false)
     const categories = [

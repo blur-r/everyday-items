@@ -1,4 +1,4 @@
-function Header() {
+const Header: React.FC = () => {
     return (
         <div className="flex justify-between px-4 py-7 items-center sm:px-8 lg:px-9" >
             <p className="text-xl font-extrabold sm:text-2xl lg:text-4xl">Everyday Items</p>
