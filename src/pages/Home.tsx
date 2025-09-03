@@ -1,5 +1,6 @@
 import Header from "../components/Header"
 import Search from "../components/Search"
+import ProductCard from "../components/ProductCard"
 
 function Home() {
     return (
@@ -14,6 +15,14 @@ function Home() {
                 </p>
             </div>
             <Search />
+            <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))] py-4 px-10 justify-center">
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+            </div>
         </div>
     )
 }
