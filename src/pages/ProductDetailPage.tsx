@@ -1,45 +1,43 @@
 import Header from "../components/Header"
-const ProductDetailPage = () => {
+const ProductDetailPage: React.FC = () => {
     return (
         <div >
             <Header />
             <div className="px-5 py-0">
                 <div className="flex flex-col gap-5 sm:flex-row ">
-                    <div className="flex flex-col gap-1.5 sm:w-1/2">
+                    <div className="flex flex-col gap-1.5 sm:w-1/2 
+                    [@media(min-width:640px)_and_(max-width:800px)]:h-full
+                    ">
                         <img
                             src="/images/236.png"
                             alt="Luxury Sun Shades"
                             className="w-full object-cover rounded-lg sm:h-3/5 sm:rounded-3xl"
                         />
-                        <div className="flex gap-1 mt-1.5 ml-1.5">
+                        <div className="flex gap-1 mt-1.5 ml-1.5 sm:w-1/2">
                             <img
                                 src="/images/236.png"
                                 alt="Luxury Sun Shades"
-                                className="w-25 h-20 object-cover rounded-lg"
+                                className="flex-1 h-20 object-cover rounded-lg"
                             />
                             <img
                                 src="/images/236.png"
                                 alt="Luxury Sun Shades"
-                                className="w-30 h-20 object-cover rounded-lg"
+                                className="flex-1 h-20 object-cover rounded-lg"
                             />
                             <img
                                 src="/images/236.png"
                                 alt="Luxury Sun Shades"
-                                className="w-30 h-20 object-cover rounded-lg"
-                            />
-                            <img
-                                src="/images/236.png"
-                                alt="Luxury Sun Shades"
-                                className="w-30 h-20 object-cover rounded-lg"
+                                className="flex-1 h-20 object-cover rounded-lg"
                             />
                         </div>
+
                     </div>
                     <div className="flex flex-col sm:w-1/2">
                         <div className="flex flex-col gap-2.5">
                             <h1 className="text-3xl font-semibold">
                                 Gucci Bag
                             </h1>
-                            <p className="text-[#343333] sm:text-xl">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                            <p className="text-[#343333] sm:text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
                             <div className="flex items-center gap-1">
                                 <i className="fas fa-star text-yellow-400"></i>
                                 <i className="fas fa-star text-yellow-400"></i>
