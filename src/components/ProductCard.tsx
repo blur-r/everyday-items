@@ -1,6 +1,6 @@
 const ProductCard: React.FC = () => {
     return (
-        <div className="bg-white rounded-xl shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] overflow-hidden p-3">
+        <div className="bg-white rounded-xl shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] overflow-hidden p-3 min-w-[300px]">
             <div className="relative">
                 <img
                     src="/images/236.png"

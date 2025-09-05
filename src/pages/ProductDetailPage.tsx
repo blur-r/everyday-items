@@ -1,17 +1,19 @@
 import Header from "../components/Header"
+import Reviews from "../components/Reviews"
+import ProductCard from "../components/ProductCard"
+import Footer from "../components/Footer"
+
 const ProductDetailPage: React.FC = () => {
     return (
-        <div >
+        <div className="min-h-screen flex flex-col">
             <Header />
-            <div className="px-5 py-0">
-                <div className="flex flex-col gap-5 sm:flex-row ">
-                    <div className="flex flex-col gap-1.5 sm:w-1/2 
-                    [@media(min-width:640px)_and_(max-width:800px)]:h-full
-                    ">
+            <div className="px-5 py-0 h-full">
+                <div className="flex flex-col gap-5 sm:flex-row sm:h-[65vh]">
+                    <div className="flex flex-col gap-1.5 sm:w-1/2">
                         <img
                             src="/images/236.png"
                             alt="Luxury Sun Shades"
-                            className="w-full object-cover rounded-lg sm:h-3/5 sm:rounded-3xl"
+                            className="w-full object-cover rounded-lg sm:h-[85%] sm:rounded-3xl"
                         />
                         <div className="flex gap-1 mt-1.5 ml-1.5 sm:w-1/2">
                             <img
@@ -30,11 +32,10 @@ const ProductDetailPage: React.FC = () => {
                                 className="flex-1 h-20 object-cover rounded-lg"
                             />
                         </div>
-
                     </div>
-                    <div className="flex flex-col sm:w-1/2">
-                        <div className="flex flex-col gap-2.5">
-                            <h1 className="text-3xl font-semibold">
+                    <div className="flex flex-col sm:w-1/2 sm:h-[60%]">
+                        <div className="flex flex-col gap-2.5 sm:justify-center">
+                            <h1 className="text-3xl font-bold">
                                 Gucci Bag
                             </h1>
                             <p className="text-[#343333] sm:text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
@@ -69,24 +70,39 @@ const ProductDetailPage: React.FC = () => {
                             <p className="font-semibold">
                                 Minimum order quantity - 48 Pieces
                             </p>
-                            <div className="flex gap-2">
-                                <button className="flex items-center justify-center text-center gap-2 w-1/2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-7 py-2 shadow-md rounded-md">
+                            <div className="flex gap-2 sm:flex-col">
+                                <button className="flex items-center justify-center text-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white text-sm px-7 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold">
                                     <i className="fas fa-shopping-cart"></i>
                                     Add to Cart
                                 </button>
-
-                                <button className="flex items-center justify-center text-center gap-2 w-1/2 bg-white hover:bg-gray-300 text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md">
+                                <button className="flex items-center justify-center text-center gap-2 w-full bg-white hover:bg-gray-300 text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md sm:text-xl sm:font-semibold">
                                     <i className="far fa-heart"></i>
                                     Add to Wishlist
                                 </button>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
+                <h1 className="mt-10 pb-5 text-3xl font-bold sm:mt-10 sm:text-4xl">Reviews</h1>
+                <div className="flex gap-2 overflow-auto scroll-auto py-2 px-1">
+                    <Reviews />
+                    <Reviews />
+                    <Reviews />
+                    <Reviews />
+                </div>
+                <h1 className="mt-10 pb-5 text-3xl font-bold sm:mt-10 sm:text-4xl">Simlar Products</h1>
+                <div className="flex gap-4.5 overflow-auto scroll-auto py-2 px-1">
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                </div>
             </div>
+
+            <footer>
+                <Footer />
+            </footer>
+
         </div>
     )
 }
