@@ -83,7 +83,7 @@ const ProductDetailPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <h1 className="mt-10 pb-5 text-3xl font-bold sm:mt-10 sm:text-4xl">Reviews</h1>
+                <h1 className="mt-10 pb-5 text-3xl font-bold sm:mt-15 sm:text-4xl">Reviews</h1>
                 <div className="flex gap-2 overflow-auto scroll-auto py-2 px-1">
                     <Reviews />
                     <Reviews />
