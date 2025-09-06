@@ -17,7 +17,7 @@ const Cart: React.FC = () => {
                     <CartCard />
                     <CartCard />
                 </div>
-                <div className="bg-white shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md py-5 pb-7 w-[70%] sm:w-[30%]">
+                <div className="bg-white shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md py-5 pb-7 w-full sm:w-[30%]">
                     <p className="text-center text-2xl font-bold">
                         Total
                     </p>
