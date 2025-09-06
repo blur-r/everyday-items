@@ -1,11 +1,18 @@
+import { Link } from "react-router-dom"
 const Footer: React.FC = () => {
 
     return (
         <div className="flex flex-col justify-center items-center bg-[#2563EB] gap-5 px-10 py-5 mt-3 sm:flex-row sm:gap-7">
             <div className="flex gap-5 items-center justify-center sm:gap-7">
-                <p className="text-white text-2xl font-bold">Everyday Items</p>
-                <p className="text-white underline text-lg">Cart</p>
-                <p className="text-white underline text-lg">Wishlist</p>
+                <Link to="/">
+                    <p className="text-white text-2xl font-bold">Everyday Items</p>
+                </Link>
+                <Link to="/cart">
+                    <p className="text-white underline text-lg">Cart</p>
+                </Link>
+                <Link to="/wishlist">
+                    <p className="text-white underline text-lg">Wishlist</p>
+                </Link>
             </div>
             <div>
                 <p className="text-white">@ [2025]. All rights reserved.</p>
