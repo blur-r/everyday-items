@@ -22,6 +22,16 @@ export interface Review {
     reviewerEmail: string;
 }
 
+export interface CartItem {
+    title: string;
+    price: number;
+    tags: string[];
+    thumbnail: string;
+    id: number;
+    description: string;
+}
+
+
 export interface ProductsResponse {
     products: Product[];
     total: number;

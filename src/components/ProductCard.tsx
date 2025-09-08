@@ -78,7 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     <span className="text-lg font-bold text-black">₦{price}</span>
                     <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-7 py-2 rounded-full" onClick={handleCart}>
                         <i className="fas fa-shopping-cart"></i>
-                        Add to Cart
+                        {isCart ? "Remove From Cart" : "Add to Cart"}
                     </button>
                 </div>
             </div>
