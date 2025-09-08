@@ -35,7 +35,7 @@ const CartCard: React.FC<CartCardProps> = ({ cartItem }) => {
                 </Link>
                 <div className="flex justify-between items-center">
                     <p className="font-bold text-2xl">
-                        {price}
+                        ₦{price}
                     </p>
                     <div>
                         <div className="flex flex-wrap gap-2 mt-2">
