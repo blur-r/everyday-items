@@ -64,7 +64,7 @@ const ProductDetailPage: React.FC = () => {
                             <div className="flex gap-3 items-center">
                                 <p className="text-4xl font-bold">₦5000</p>
                                 <span className="text-xs px-4 py-2 bg-green-100 text-green-600 rounded-full">
-                                    Accessory
+                                    In Stock
                                 </span>
                             </div>
                             <p className="font-semibold">
