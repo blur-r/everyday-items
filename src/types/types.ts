@@ -10,12 +10,16 @@ export interface Product {
     images: string[];
     warrantyInformation: string;
     shippingInformation: string;
-    reviews: [{
-        rating: number;
-        comment: string;
-        reviewerName: string;
-        reviewerEmail: string;
-    }]
+    category: string;
+    minimumOrderQuantity: number;
+    reviews: Review[];
+}
+
+export interface Review {
+    rating: number;
+    comment: string;
+    reviewerName: string;
+    reviewerEmail: string;
 }
 
 export interface ProductsResponse {
