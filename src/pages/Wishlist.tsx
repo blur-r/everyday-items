@@ -32,7 +32,7 @@ const Wishlist: React.FC = () => {
             </div>
 
             {/* Wishlist Grid */}
-            <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))] py-4 px-10 justify-center mt-5">
+            <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px,300px))] py-4 px-10 justify-center mt-5">
                 {wishlist.length > 0 ? (
                     wishlist.map((product) => (
                         <ProductCard
