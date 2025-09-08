@@ -23,7 +23,7 @@ const Home: React.FC = () => {
                 </p>
             </div>
             <Search />
-            <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))] py-4 px-10 justify-center">
+            <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px, 300px))] py-4 px-10 justify-center items-cente">
                 {products.map(product => {
                     return <ProductCard key={product.id} product={product} />
                 })}
