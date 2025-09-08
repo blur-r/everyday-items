@@ -1,6 +1,6 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import ProductCard from "../components/ProductCard"
+// import ProductCard from "../components/ProductCard"
 
 const Wishlist: React.FC = () => {
     return (
@@ -11,12 +11,12 @@ const Wishlist: React.FC = () => {
                 <p className="text-xl font-semibold sm:text-3xl">5 Items</p>
             </div>
             <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))] py-4 px-10 justify-center mt-5">
+                {/* <ProductCard />
                 <ProductCard />
                 <ProductCard />
                 <ProductCard />
                 <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                <ProductCard /> */}
             </div>
             <div className="flex flex-col justify-between px-5 sm:flex-row sm:items-center">
                 <div className="flex justify-center mb-2.5 gap-6">
