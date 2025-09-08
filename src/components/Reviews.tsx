@@ -20,12 +20,14 @@ const Reviews: React.FC<ReviewsProp> = ({ review }) => {
                 </div>
             </div>
             <div className="flex items-center gap-1">
-                <i className="fas fa-star text-yellow-400"></i>
-                <i className="fas fa-star text-yellow-400"></i>
-                <i className="fas fa-star text-yellow-400"></i>
-                <i className="fas fa-star text-gray-300"></i>
-                <i className="fas fa-star text-gray-300"></i>
-                <span className="text-xl ml-2 font-semibold">({rating}/5)</span>
+                {Array.from({ length: 5 }, (_, i) => (
+                    <i
+                        key={i}
+                        className={`fas fa-star ${i < Math.round(rating) ? "text-yellow-400" : "text-gray-300"
+                            }`}
+                    ></i>
+                ))}
+                <span className="text-2xl ml-2">({rating}/5)</span>
             </div>
             <p className="text-lg">{comment}</p>
         </div>

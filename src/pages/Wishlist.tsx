@@ -1,38 +1,67 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
-// import ProductCard from "../components/ProductCard"
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ProductCard from "../components/ProductCard";
+import { useAppContext } from "../context/AppContext";
 
 const Wishlist: React.FC = () => {
+    const { wishlist, removeFromWishlist, cart, addToCart } = useAppContext();
+
+    // function: move all wishlist items to cart
+    const moveAllToCart = () => {
+        wishlist.forEach((item) => {
+            if (!cart.some((c) => c.id === item.id)) {
+                addToCart(item);
+            }
+        });
+    };
+
+    // calculate total price of wishlist
+    const totalPrice = wishlist.reduce((acc, item) => acc + item.price, 0);
+    const finalTotalPrice = totalPrice.toFixed(2);
+
     return (
         <div>
             <Header />
+
+            {/* Top Header */}
             <div className="flex justify-between border-b-2 pb-3 px-5 mt-7">
                 <h1 className="text-xl font-semibold sm:text-3xl">Your Wishlist</h1>
-                <p className="text-xl font-semibold sm:text-3xl">5 Items</p>
+                <p className="text-xl font-semibold sm:text-3xl">
+                    {wishlist.length} Items
+                </p>
             </div>
+
+            {/* Wishlist Grid */}
             <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))] py-4 px-10 justify-center mt-5">
-                {/* <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard /> */}
+                {wishlist.length > 0 ? (
+                    wishlist.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            onRemove={() => removeFromWishlist(product.id)} // allow removing items
+                        />
+                    ))
+                ) : (
+                    <p className="text-center text-gray-500 col-span-full">
+                        Your wishlist is empty.
+                    </p>
+                )}
             </div>
-            <div className="flex flex-col justify-between px-5 sm:flex-row sm:items-center">
+
+            {/* Footer Actions */}
+            {wishlist.length > 0 && <div className="flex flex-col justify-between px-5 sm:flex-row sm:items-center">
                 <div className="flex justify-center mb-2.5 gap-6">
-                    <p className="font-semibold sm:text-2xl">
-                        Esitmated total
-                    </p>
-                    <p className="font-semibold sm:text-2xl">
-                        -
-                    </p>
-                    <p className="font-semibold sm:text-2xl">
-                        #20,000
-                    </p>
+                    <p className="font-semibold sm:text-2xl">Estimated total</p>
+                    <p className="font-semibold sm:text-2xl">-</p>
+                    <p className="font-semibold sm:text-2xl">₦{finalTotalPrice}</p>
                 </div>
                 <div>
                     <div className="flex gap-2 ">
-                        <button className="flex items-center justify-center text-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold sm:px-7">
+                        <button
+                            onClick={moveAllToCart}
+                            disabled={wishlist.length === 0}
+                            className="flex items-center justify-center text-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold sm:px-7 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
                             <i className="fas fa-shopping-cart"></i>
                             Add all items to Cart
                         </button>
@@ -42,10 +71,11 @@ const Wishlist: React.FC = () => {
                         </button>
                     </div>
                 </div>
-            </div>
+            </div>}
+
             <Footer />
         </div>
-    )
-}
+    );
+};
 
-export default Wishlist
+export default Wishlist;

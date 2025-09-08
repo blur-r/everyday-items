@@ -76,11 +76,13 @@ const ProductDetailPage: React.FC = () => {
                             </h1>
                             <p className="text-[#343333] sm:text-lg">{product.description}</p>
                             <div className="flex items-center gap-1">
-                                <i className="fas fa-star text-yellow-400"></i>
-                                <i className="fas fa-star text-yellow-400"></i>
-                                <i className="fas fa-star text-yellow-400"></i>
-                                <i className="fas fa-star text-gray-300"></i>
-                                <i className="fas fa-star text-gray-300"></i>
+                                {Array.from({ length: 5 }, (_, i) => (
+                                    <i
+                                        key={i}
+                                        className={`fas fa-star ${i < Math.round(product.rating) ? "text-yellow-400" : "text-gray-300"
+                                            }`}
+                                    ></i>
+                                ))}
                                 <span className="text-2xl ml-2">({product.rating}/5)</span>
                             </div>
                             <div>
@@ -98,7 +100,7 @@ const ProductDetailPage: React.FC = () => {
                                 </div>
                             </div>
                             <div className="flex gap-3 items-center">
-                                <p className="text-4xl font-bold">₦5000</p>
+                                <p className="text-4xl font-bold">₦{product.price}</p>
                                 <span className="text-xs px-4 py-2 bg-green-100 text-green-600 rounded-full">
                                     {product.availabilityStatus}
                                 </span>

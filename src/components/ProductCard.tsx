@@ -1,12 +1,33 @@
 import { Link } from "react-router-dom";
 import type { Product } from "../types/types";
+import { useAppContext } from "../context/AppContext";
 
 type ProductCardProps = {
     product: Product;
+    onRemove?: () => void;
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const { id, images, title, description, tags, price } = product;
+
+    const { removeFromWishlist, addToWishlist, addToCart, removeFromCart, isInCart, isInWishlist } = useAppContext();
+    const isLoved = isInWishlist(id);
+    const handleWishlist = () => {
+        if (isLoved) {
+            removeFromWishlist(id);
+        } else {
+            addToWishlist(product);
+        }
+    };
+
+    const isCart = isInCart(id);
+    const handleCart = () => {
+        if (isCart) {
+            removeFromCart(id);
+        } else {
+            addToCart(product);
+        }
+    };
 
     return (
         <div className="bg-white rounded-xl shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] overflow-hidden p-3 max-w-[300px] min-w-[300px]">
@@ -19,9 +40,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     />
                 </Link>
 
-                <div className="absolute top-3 right-3 bg-white rounded-full w-6 h-6  px-1">
-                    <button className=" text-gray-600 hover:text-red-500">
-                        <i className="fas fa-heart"></i>
+                <div className="absolute top-3 right-3 bg-white rounded-full w-6 h-6 px-1">
+                    <button
+                        className={`hover:scale-110 transition-transform duration-200 ${isLoved ? "text-red-500" : "text-gray-600 hover:text-red-500"
+                            }`}
+                        onClick={handleWishlist}
+                    >
+                        <i className={`fas fa-heart ${isLoved ? "text-red-500" : "text-gray-600"}`}></i>
                     </button>
                 </div>
 
@@ -51,7 +76,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 </Link>
                 <div className="flex items-center justify-between mt-5">
                     <span className="text-lg font-bold text-black">₦{price}</span>
-                    <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-7 py-2 rounded-full">
+                    <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-7 py-2 rounded-full" onClick={handleCart}>
                         <i className="fas fa-shopping-cart"></i>
                         Add to Cart
                     </button>
