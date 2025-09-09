@@ -6,8 +6,8 @@ import { useProducts } from "../hooks/useProducts";
 import { useProductsContext } from "../context/ProductsContext";
 
 const Home: React.FC = () => {
-    const { search } = useProductsContext();
-    const { products, loading, error } = useProducts({ search });
+    const { search, category } = useProductsContext();
+    const { products, loading, error } = useProducts({ search, category: category || undefined });
     return (
         <div>
             <Header />
