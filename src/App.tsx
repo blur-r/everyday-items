@@ -5,17 +5,19 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import { AppProvider } from './context/AppContext';
+import { ProductsProvider } from './context/ProductsContext';
 
 function App() {
-
   return (
     <AppProvider>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/pdp/:id' element={<ProductDetailPage />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/wishlist' element={<Wishlist />} />
-      </Routes>
+      <ProductsProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pdp/:id" element={<ProductDetailPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+        </Routes>
+      </ProductsProvider>
     </AppProvider>
   )
 }

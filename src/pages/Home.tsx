@@ -3,10 +3,11 @@ import Search from "../components/Search"
 import ProductCard from "../components/ProductCard"
 import Footer from "../components/Footer";
 import { useProducts } from "../hooks/useProducts";
+import { useProductsContext } from "../context/ProductsContext";
 
 const Home: React.FC = () => {
-
-    const { products, loading, error } = useProducts({})
+    const { search } = useProductsContext();
+    const { products, loading, error } = useProducts({ search });
     return (
         <div>
             <Header />
