@@ -54,7 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
             <div className="py-3">
                 <Link to={`/pdp/${id}`}>
-                    <h2 className={`${darkMode ? "text-white" : "text-gray-800"}text-lg font-bold `}>{title}</h2>
+                    <h2 className={`${darkMode ? "text-white" : "text-gray-800"} text-lg font-bold `}>{title}</h2>
                 </Link>
 
                 <div className="flex flex-wrap gap-2 mt-2">

@@ -5,9 +5,10 @@ import Footer from "../components/Footer"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import type { Product } from "../types/types"
+import { useAppContext } from "../context/AppContext";
 
 const ProductDetailPage: React.FC = () => {
-
+    const { darkMode } = useAppContext();
     const { id } = useParams<{ id: string }>()
     const [product, setProduct] = useState<Product | null>(null)
     const [loading, setLoading] = useState(true)
@@ -46,7 +47,7 @@ const ProductDetailPage: React.FC = () => {
     if (!product) return <p className="p-5">Product not found</p>;
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className={`${darkMode ? "bg-[#111827]" : "bg-white"} min-h-screen flex flex-col `}>
             <Header />
             <div className="px-5 py-0 h-full">
                 <div className="flex flex-col gap-5 sm:flex-row sm:h-[65vh]">
@@ -71,7 +72,7 @@ const ProductDetailPage: React.FC = () => {
                     </div>
                     <div className="flex flex-col sm:w-1/2 sm:h-[60%]">
                         <div className="flex flex-col gap-2.5 sm:justify-center">
-                            <h1 className="text-3xl font-bold">
+                            <h1 className={`${darkMode ? "text-white" : "text-gray-800"} text-3xl font-bold `}>
                                 {product?.title}
                             </h1>
                             <p className="text-[#343333] sm:text-lg">{product.description}</p>
@@ -121,13 +122,13 @@ const ProductDetailPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <h1 className="mt-10 pb-5 text-3xl font-bold sm:mt-15 sm:text-4xl">Reviews</h1>
+                <h1 className={`${darkMode ? "text-white" : "text-gray-800"} mt-10 pb-5 text-3xl font-bold sm:mt-15 sm:text-4xl`}>Reviews</h1>
                 <div className="flex gap-2 overflow-auto scroll-auto py-2 px-1">
                     {product.reviews && product.reviews.length > 0 ? product.reviews.map((review, index) => (
                         <Reviews key={index} review={review} />
                     )) : <p>No reviews available.</p>}
                 </div>
-                <h1 className="mt-10 pb-5 text-3xl font-bold sm:mt-10 sm:text-4xl">Simlar Products</h1>
+                <h1 className={`${darkMode ? "text-white" : "text-gray-800"} mt-10 pb-5 text-3xl font-bold sm:mt-15 sm:text-4xl`}>Simlar Products</h1>
                 <div className="flex gap-4.5 overflow-auto scroll-auto py-2 px-1">
                     {similarProducts.map((p) => (
                         <ProductCard key={p.id} product={p} />
