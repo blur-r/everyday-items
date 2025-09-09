@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useProductsContext } from "../context/ProductsContext";
+import { useAppContext } from "../context/AppContext";
 
 const Search: React.FC = () => {
+    const { darkMode } = useAppContext();
     const { setSearch, setCategory } = useProductsContext();
     const [query, setQuery] = useState("");
     const [filterDropdown, setFilterDropdown] = useState(false)
@@ -34,21 +36,21 @@ const Search: React.FC = () => {
     ]
 
     return (
-        <div className="bg-white shadow-md px-4 py-5 w-11/12 mx-auto rounded-md relative top-[-15px] items-center sm:flex gap-1.5 sm:h-20 ">
-            <div className="flex items-center gap-3 bg-[#F2F2F2] pl-3 py-1 rounded-md h-10 sm:w-1/2">
+        <div className={`${darkMode ? "bg-[#1F2937]" : "bg-white"} shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] px-4 py-5 w-11/12 mx-auto rounded-md relative top-[-15px] items-center sm:flex gap-1.5 sm:h-20`}>
+            <div className={`${darkMode ? "bg-[#374151]" : "bg-[#F2F2F2]"} flex items-center gap-3  pl-3 py-1 rounded-md h-10 sm:w-1/2`}>
                 {query && (
                     <button
                         onClick={() => {
                             setQuery("");
                             setSearch("");
                         }}
-                        className="text-gray-500 hover:text-gray-800 ml-2"
+                        className={`${darkMode ? "text-white" : "text-gray-500"} hover:text-gray-800 ml-2 cursor-pointer`}
                     >
                         <i className="fas fa-times"></i>
                     </button>
                 )}
                 <input type="text" className="p-1 outline-none" placeholder="Search Products" value={query} onChange={(e) => setQuery(e.target.value)} />
-                <button className="bg-blue-500 text-white px-4 py-2 rounded ml-auto cursor-pointer" onClick={() => {
+                <button className={`${darkMode ? "bg-[#111C38]" : "bg-blue-500"}  text-white px-4 py-2 rounded ml-auto cursor-pointer`} onClick={() => {
                     if (query.trim() === "") {
                         setSearch("");
                         setQuery("");
@@ -62,9 +64,9 @@ const Search: React.FC = () => {
             </div>
             <div className="flex gap-1 mt-1.5 sm:w-1/2 sm:mt-0">
                 <div className="w-1/2 relative">
-                    <button onClick={() => setCategoriesDropdown(!categoriesDropdown)} className="bg-[#F2F2F2] w-full rounded-md px-3 h-9 flex justify-between items-center cursor-pointer ">
-                        <span className="text-black/40">Categories</span>
-                        <i className="fas fa-angle-down text-black/40"></i>
+                    <button onClick={() => setCategoriesDropdown(!categoriesDropdown)} className={`${darkMode ? "bg-[#374151]" : "bg-[#F2F2F2]"} w-full rounded-md px-3 h-9 flex justify-between items-center cursor-pointer`}>
+                        <span className={`${darkMode ? "text-[#f2f2f2]" : "text-black/40"}`}>Categories</span>
+                        <i className={`fas fa-angle-down ${darkMode ? "text-[#f2f2f2]" : "text-black/40"}`}></i>
                     </button>
 
                     {categoriesDropdown && (
@@ -92,9 +94,9 @@ const Search: React.FC = () => {
                 </div>
 
                 <div className="w-1/2 relative">
-                    <button onClick={() => setFilterDropdown(!filterDropdown)} className="bg-[#F2F2F2] w-full rounded-md px-3 py-1.5 flex justify-between items-center cursor-pointer">
-                        <span className="text-black/40">Filters</span>
-                        <i className="fas fa-angle-down text-black/40"></i>
+                    <button onClick={() => setFilterDropdown(!filterDropdown)} className={`${darkMode ? "bg-[#374151]" : "bg-[#F2F2F2]"} w-full rounded-md px-3 py-1.5 flex justify-between items-center cursor-pointer`}>
+                        <span className={`${darkMode ? "text-[#f2f2f2]" : "text-black/40"}`}>Filters</span>
+                        <i className={`fas fa-angle-down ${darkMode ? "text-[#f2f2f2]" : "text-black/40"}`}></i>
                     </button>
 
                     {filterDropdown && (

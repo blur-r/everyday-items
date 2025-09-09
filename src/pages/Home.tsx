@@ -4,18 +4,20 @@ import ProductCard from "../components/ProductCard"
 import Footer from "../components/Footer";
 import { useProducts } from "../hooks/useProducts";
 import { useProductsContext } from "../context/ProductsContext";
+import { useAppContext } from "../context/AppContext";
 
 const Home: React.FC = () => {
+    const { darkMode } = useAppContext();
     const { search, category } = useProductsContext();
     const { products, loading, error } = useProducts({ search, category: category || undefined });
     return (
-        <div>
+        <div className={`min-h-screen ${darkMode ? "bg-[#111827] text-white" : "bg-white text-black"}`}>
             <Header />
 
             {loading && <p>Loading...</p>}
             {error && <p className="text-red-500">{error}</p>}
 
-            <div className="bg-[#2563EB] py-6">
+            <div className={` py-6 ${darkMode ? "bg-[#1F2937] text-white" : "bg-[#2563EB]"}`}>
                 <h1 className="text-center text-white text-2xl font-bold pb-1 sm:text-4xl">
                     Discover Premium Products
                 </h1>

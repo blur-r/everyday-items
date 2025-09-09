@@ -12,6 +12,8 @@ type AppContextType = {
     addToWishlist: (product: Product) => void;
     removeFromWishlist: (productId: number) => void;
     isInWishlist: (productId: number) => boolean;
+    darkMode: boolean;
+    setDarkMode: (val: boolean) => void;
 };
 
 // Create context
@@ -25,6 +27,7 @@ type AppProviderProps = {
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     // --- CART ---
     const [cart, setCart] = useState<Product[]>([]);
+    const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
         const stored = localStorage.getItem("cart");
@@ -82,6 +85,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
                 addToWishlist,
                 removeFromWishlist,
                 isInWishlist,
+                darkMode,
+                setDarkMode
             }}
         >
             {children}

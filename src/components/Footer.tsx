@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
-const Footer: React.FC = () => {
+import { useAppContext } from "../context/AppContext";
 
+const Footer: React.FC = () => {
+    const { darkMode } = useAppContext();
     return (
-        <div className="flex flex-col justify-center items-center bg-[#2563EB] gap-5 px-10 py-5 mt-3 sm:flex-row sm:gap-7 relative bottom-0">
+        <div className={`${darkMode ? "bg-[#1F2937] text-white" : "bg-[#2563EB]"} flex flex-col justify-center items-center gap-5 px-10 py-5 mt-3 sm:flex-row sm:gap-7 relative bottom-0`}>
             <div className="flex gap-5 items-center justify-center sm:gap-7">
                 <Link to="/">
                     <p className="text-white text-2xl font-bold">Everyday Items</p>
