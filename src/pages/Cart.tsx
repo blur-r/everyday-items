@@ -2,6 +2,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import CartCard from "../components/CartCard"
 import { useAppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
 const Cart: React.FC = () => {
 
     const { cart } = useAppContext();
@@ -54,10 +55,13 @@ const Cart: React.FC = () => {
                                     <i className="fas fa-arrow-right"></i>
                                     Proceed to Checkout
                                 </button>
-                                <button className="flex items-center justify-center  w-[80%] text-center gap-2 bg-white hover:bg-gray-300 text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md  sm:font-semibold sm:px-2">
-                                    <i className="fas fa-shopping-bag"></i>
-                                    Continue Shopping
-                                </button>
+                                <Link to="/" className="w-[80%]">
+                                    <button className="flex items-center justify-center w-full  text-center gap-2 bg-white hover:bg-gray-300 text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md  sm:font-semibold sm:px-2">
+                                        <i className="fas fa-shopping-bag"></i>
+                                        Continue Shopping
+                                    </button>
+                                </Link>
+
                             </div>
                         </div>
                     </div>

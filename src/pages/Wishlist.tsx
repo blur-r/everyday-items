@@ -20,58 +20,58 @@ const Wishlist: React.FC = () => {
     const finalTotalPrice = totalPrice.toFixed(2);
 
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Header />
 
-            {/* Top Header */}
-            <div className="flex justify-between border-b-2 pb-3 px-5 mt-7">
-                <h1 className="text-xl font-semibold sm:text-3xl">Your Wishlist</h1>
-                <p className="text-xl font-semibold sm:text-3xl">
-                    {wishlist.length} Items
-                </p>
-            </div>
-
-            {/* Wishlist Grid */}
-            <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px,300px))] py-4 px-10 justify-center mt-5">
-                {wishlist.length > 0 ? (
-                    wishlist.map((product) => (
-                        <ProductCard
-                            key={product.id}
-                            product={product}
-                            onRemove={() => removeFromWishlist(product.id)} // allow removing items
-                        />
-                    ))
-                ) : (
-                    <p className="text-center text-gray-500 col-span-full">
-                        Your wishlist is empty.
+            <main className="flex-1">
+                <div className="flex justify-between border-b-2 pb-3 px-5 mt-7">
+                    <h1 className="text-xl font-semibold sm:text-3xl">Your Wishlist</h1>
+                    <p className="text-xl font-semibold sm:text-3xl">
+                        {wishlist.length} Items
                     </p>
-                )}
-            </div>
+                </div>
 
-            {/* Footer Actions */}
-            {wishlist.length > 0 && <div className="flex flex-col justify-between px-5 sm:flex-row sm:items-center">
-                <div className="flex justify-center mb-2.5 gap-6">
-                    <p className="font-semibold sm:text-2xl">Estimated total</p>
-                    <p className="font-semibold sm:text-2xl">-</p>
-                    <p className="font-semibold sm:text-2xl">₦{finalTotalPrice}</p>
+                <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(300px,300px))] py-4 px-10 justify-center mt-5">
+                    {wishlist.length > 0 ? (
+                        wishlist.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                onRemove={() => removeFromWishlist(product.id)} // allow removing items
+                            />
+                        ))
+                    ) : (
+                        <p className="text-center text-gray-500 col-span-full">
+                            Your wishlist is empty.
+                        </p>
+                    )}
                 </div>
-                <div>
-                    <div className="flex gap-2 ">
-                        <button
-                            onClick={moveAllToCart}
-                            disabled={wishlist.length === 0}
-                            className="flex items-center justify-center text-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold sm:px-7 disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            <i className="fas fa-shopping-cart"></i>
-                            Add all items to Cart
-                        </button>
-                        <button className="flex items-center justify-center text-center gap-2 bg-white hover:bg-gray-300 text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md sm:text-xl sm:font-semibold">
-                            <i className="fas fa-shopping-bag"></i>
-                            Continue Shopping
-                        </button>
+
+                {wishlist.length > 0 && <div className="flex flex-col justify-between px-5 sm:flex-row sm:items-center">
+                    <div className="flex justify-center mb-2.5 gap-6">
+                        <p className="font-semibold sm:text-2xl">Estimated total</p>
+                        <p className="font-semibold sm:text-2xl">-</p>
+                        <p className="font-semibold sm:text-2xl">₦{finalTotalPrice}</p>
                     </div>
-                </div>
-            </div>}
+                    <div>
+                        <div className="flex gap-2 ">
+                            <button
+                                onClick={moveAllToCart}
+                                disabled={wishlist.length === 0}
+                                className="flex items-center justify-center text-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold sm:px-7 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <i className="fas fa-shopping-cart"></i>
+                                Add all items to Cart
+                            </button>
+                            <button className="flex items-center justify-center text-center gap-2 bg-white hover:bg-gray-300 text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md sm:text-xl sm:font-semibold">
+                                <i className="fas fa-shopping-bag"></i>
+                                Continue Shopping
+                            </button>
+                        </div>
+                    </div>
+                </div>}
+            </main>
+
 
             <Footer />
         </div>
