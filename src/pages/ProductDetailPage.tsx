@@ -166,7 +166,7 @@ const ProductDetailPage: React.FC = () => {
                     )) : <p>No reviews available.</p>}
                 </div>
                 <h1 className={`${darkMode ? "text-white" : "text-gray-800"} mt-10 pb-5 text-3xl font-bold sm:mt-15 sm:text-4xl`}>Simlar Products</h1>
-                <div className="flex gap-4.5 overflow-auto scroll-auto py-2 px-1">
+                <div className="flex gap-4.5 overflow-auto scroll-auto py-2 px-1 mb-9">
                     {similarProducts.map((p) => (
                         <ProductCard key={p.id} product={p} />
                     ))}
