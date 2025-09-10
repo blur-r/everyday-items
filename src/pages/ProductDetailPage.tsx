@@ -75,7 +75,7 @@ const ProductDetailPage: React.FC = () => {
                             <h1 className={`${darkMode ? "text-white" : "text-gray-800"} text-3xl font-bold `}>
                                 {product?.title}
                             </h1>
-                            <p className="text-[#343333] sm:text-lg">{product.description}</p>
+                            <p className={`text-[#343333] sm:text-lg ${darkMode ? "text-[#b8b4b4]" : ""}`}>{product.description}</p>
                             <div className="flex items-center gap-1">
                                 {Array.from({ length: 5 }, (_, i) => (
                                     <i
@@ -84,37 +84,37 @@ const ProductDetailPage: React.FC = () => {
                                             }`}
                                     ></i>
                                 ))}
-                                <span className="text-2xl ml-2">({product.rating}/5)</span>
+                                <span className={`text-2xl ml-2 ${darkMode ? "text-white" : ""}`}>({product.rating}/5)</span>
                             </div>
                             <div>
                                 <div className="flex items-center gap-3">
                                     <i className="fas fa-truck text-blue-600"></i>
-                                    <p>{product.shippingInformation}</p>
+                                    <p className={`${darkMode ? "text-white" : ""}`}>{product.shippingInformation}</p>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <i className="fas fa-shield-alt text-blue-600"></i>
-                                    <p>{product.warrantyInformation}</p>
+                                    <p className={`${darkMode ? "text-white" : ""}`}>{product.warrantyInformation}</p>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <i className="fas fa-times-circle text-red-600"></i>
-                                    <p>No Return Policy</p>
+                                    <p className={`${darkMode ? "text-white" : ""}`}>No Return Policy</p>
                                 </div>
                             </div>
                             <div className="flex gap-3 items-center">
-                                <p className="text-4xl font-bold">₦{product.price}</p>
-                                <span className="text-xs px-4 py-2 bg-green-100 text-green-600 rounded-full">
+                                <p className={`text-4xl font-bold ${darkMode ? "text-white" : ""}`}>₦{product.price}</p>
+                                <span className={`text-xs px-4 py-2 rounded-full ${darkMode ? "bg-[#10B981] text-white" : " bg-green-100 text-green-600"}`}>
                                     {product.availabilityStatus}
                                 </span>
                             </div>
-                            <p className="font-semibold">
+                            <p className={`"font-semibold ${darkMode ? "text-white" : "text-black"}`}>
                                 Minimum order quantity - {product.minimumOrderQuantity} Pieces
                             </p>
                             <div className="flex gap-2 sm:flex-col">
-                                <button className="flex items-center justify-center text-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white text-sm px-7 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold">
+                                <button className={`flex items-center justify-center text-center gap-2 w-full text-white text-sm px-7 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold ${darkMode ? "bg-[#1F2937] hover:bg-[#273447]" : " bg-blue-600 hover:bg-blue-700"}`}>
                                     <i className="fas fa-shopping-cart"></i>
                                     Add to Cart
                                 </button>
-                                <button className="flex items-center justify-center text-center gap-2 w-full bg-white hover:bg-gray-300 text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md sm:text-xl sm:font-semibold">
+                                <button className={`flex items-center justify-center text-center gap-2 w-ful text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md sm:text-xl sm:font-semibold ${darkMode ? "bg-[#4B5563] text-white hover:bg-[#6a778a]" : " bg-white hover:bg-gray-300"}`}>
                                     <i className="far fa-heart"></i>
                                     Add to Wishlist
                                 </button>

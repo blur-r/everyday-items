@@ -4,7 +4,7 @@ import ProductCard from "../components/ProductCard";
 import { useAppContext } from "../context/AppContext";
 
 const Wishlist: React.FC = () => {
-    const { wishlist, removeFromWishlist, cart, addToCart } = useAppContext();
+    const { wishlist, removeFromWishlist, cart, addToCart, darkMode } = useAppContext();
 
     // function: move all wishlist items to cart
     const moveAllToCart = () => {
@@ -20,7 +20,7 @@ const Wishlist: React.FC = () => {
     const finalTotalPrice = totalPrice.toFixed(2);
 
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className={`flex flex-col min-h-screen ${darkMode ? "bg-[#111827] text-white" : "bg-white text-black"}`}>
             <Header />
 
             <main className="flex-1">
