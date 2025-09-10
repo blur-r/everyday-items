@@ -8,12 +8,35 @@ import type { Product } from "../types/types"
 import { useAppContext } from "../context/AppContext";
 
 const ProductDetailPage: React.FC = () => {
-    const { darkMode } = useAppContext();
+    const { removeFromWishlist, addToWishlist, addToCart, removeFromCart, isInCart, isInWishlist, darkMode } = useAppContext();
     const { id } = useParams<{ id: string }>()
     const [product, setProduct] = useState<Product | null>(null)
     const [loading, setLoading] = useState(true)
     const [similarProducts, setSimilarProducts] = useState<Product[]>([])
     const [selectedimage, setSelectedImage] = useState<string | null>(null)
+
+    const numericId = Number(id);
+
+    const isLoved = isInWishlist(numericId);
+    const handleWishlist = () => {
+        if (!product) return; // ✅ guard
+        if (isLoved) {
+            removeFromWishlist(numericId);
+        } else {
+            addToWishlist(product);
+        }
+    };
+
+    const isCart = isInCart(numericId);
+    const handleCart = () => {
+        if (!product) return; // ✅ guard
+        if (isCart) {
+            removeFromCart(numericId);
+        } else {
+            addToCart(product);
+        }
+    };
+
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -109,16 +132,30 @@ const ProductDetailPage: React.FC = () => {
                             <p className={`"font-semibold ${darkMode ? "text-white" : "text-black"}`}>
                                 Minimum order quantity - {product.minimumOrderQuantity} Pieces
                             </p>
-                            <div className="flex gap-2 sm:flex-col">
-                                <button className={`flex items-center justify-center text-center gap-2 w-full text-white text-sm px-7 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold ${darkMode ? "bg-[#1F2937] hover:bg-[#273447]" : " bg-blue-600 hover:bg-blue-700"}`}>
+                            <div className="flex flex-col gap-2">
+                                <button
+                                    onClick={handleCart}
+                                    className={`flex items-center justify-center text-center gap-2 w-full text-white text-sm px-7 py-2 shadow-md rounded-md sm:text-xl sm:font-semibold ${darkMode
+                                        ? "bg-[#1F2937] hover:bg-[#273447]"
+                                        : " bg-blue-600 hover:bg-blue-700"
+                                        }`}
+                                >
                                     <i className="fas fa-shopping-cart"></i>
-                                    Add to Cart
+                                    {isCart ? "Remove from Cart" : "Add to Cart"}
                                 </button>
-                                <button className={`flex items-center justify-center text-center gap-2 w-ful text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md sm:text-xl sm:font-semibold ${darkMode ? "bg-[#4B5563] text-white hover:bg-[#6a778a]" : " bg-white hover:bg-gray-300"}`}>
+
+                                <button
+                                    onClick={handleWishlist}
+                                    className={`flex items-center justify-center text-center gap-2 w-ful text-black text-sm px-7 py-2 shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] rounded-md sm:text-xl sm:font-semibold ${darkMode
+                                        ? "bg-[#4B5563] text-white hover:bg-[#6a778a]"
+                                        : " bg-white hover:bg-gray-300"
+                                        }`}
+                                >
                                     <i className="far fa-heart"></i>
-                                    Add to Wishlist
+                                    {isLoved ? "Remove from Wishlist" : "Add to Wishlist"}
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </div>

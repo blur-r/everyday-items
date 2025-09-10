@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../context/AppContext";
 
 const Header: React.FC = () => {
-    const { darkMode, setDarkMode } = useAppContext();
+    const { darkMode, setDarkMode, cart, wishlist } = useAppContext();
     const [isScrolled, setIsScrolled] = useState(false)
 
     useEffect(() => {
@@ -34,10 +34,21 @@ const Header: React.FC = () => {
             </Link>
             <div className="flex gap-4 sm:gap-7 lg:gap-8">
                 <Link to="/cart">
-                    <i className={`fas fa-shopping-cart text-[20px] sm:text-[24px] lg:text-[30px]`} />
+                    <div className="relative">
+                        {cart.length > 0 && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
+                            {cart.length}
+                        </span>}
+                        <i className={`fas fa-shopping-cart text-[20px] sm:text-[24px] lg:text-[30px]`} />
+                    </div>
+
                 </Link>
                 <Link to="/wishlist">
-                    <i className={`far fa-heart text-[20px] sm:text-[24px] lg:text-[30px]`} />
+                    <div className="relative">
+                        {wishlist.length > 0 && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
+                            {wishlist.length}
+                        </span>}
+                        <i className={`far fa-heart text-[20px] sm:text-[24px] lg:text-[30px]`} />
+                    </div>
                 </Link>
                 {
                     darkMode ? <button className="cursor-pointer" onClick={() => setDarkMode(!darkMode)}>
