@@ -21,11 +21,14 @@ const Header: React.FC = () => {
     return (
         <div
             className={`sticky top-0 z-50 flex justify-between px-4 py-7 items-center sm:px-8 lg:px-9 transition-colors duration-300
-                    ${darkMode
-                    ? "bg-[#111827] text-white"
+    ${darkMode
+                    ? isScrolled
+                        ? "bg-[#111C38] text-white shadow-md"
+                        : "bg-[#111827] text-white"
                     : isScrolled
                         ? "bg-blue-600 text-white shadow-md"
-                        : "bg-transparent text-black"}`}
+                        : "bg-transparent text-black"
+                }`}
         >
             <Link to="/">
                 <p className="text-xl font-extrabold sm:text-2xl lg:text-4xl">
@@ -47,7 +50,7 @@ const Header: React.FC = () => {
                         {wishlist.length > 0 && <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
                             {wishlist.length}
                         </span>}
-                        <i className={`far fa-heart text-[20px] sm:text-[24px] lg:text-[30px]`} />
+                        <i className={`fa-solid fa-heart text-[20px] sm:text-[24px] lg:text-[30px]`} />
                     </div>
                 </Link>
                 {
