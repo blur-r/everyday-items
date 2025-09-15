@@ -70,7 +70,7 @@ const Search: React.FC = () => {
                     </button>
 
                     {categoriesDropdown && (
-                        <div className="w-77 z-20 flex flex-wrap absolute mt-2 bg-white rounded-md shadow-lg py-3 px-1.5 border border-gray-200 sm:w-170 sm:px-3">
+                        <div className="w-89 z-20 flex flex-wrap absolute mt-2 bg-white rounded-md shadow-lg py-3 px-1.5 border border-gray-200 sm:w-full sm:px-3">
                             {categories.map((category) => (
                                 <label
                                     key={category}
@@ -100,7 +100,7 @@ const Search: React.FC = () => {
                     </button>
 
                     {filterDropdown && (
-                        <div className="absolute z-20 mt-2 w-40 bg-white rounded-md shadow-lg py-3 px-1.5  border border-gray-200 sm:w-56 sm:px-3">
+                        <div className="absolute z-20 mt-2 w-full bg-white rounded-md shadow-lg py-3 px-1.5  border border-gray-200 sm:w-full sm:px-3">
                             <p className="text-xs font-semibold text-gray-500 mb-2">Filter by</p>
 
                             <label className="flex items-center gap-1 p-2 rounded-md cursor-pointer hover:bg-gray-100 sm:gap-3">
