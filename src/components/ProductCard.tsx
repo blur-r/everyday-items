@@ -30,7 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     };
 
     return (
-        <div className={`${darkMode ? "bg-[#1F2937]" : "bg-white"} rounded-xl shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] overflow-hidden p-3 max-w-[300px] min-w-[300px]`}>
+        <div className={`${darkMode ? "bg-[#1F2937]" : "bg-white"} rounded-xl shadow-[0_0_11px_-1px_rgba(0,0,0,0.25)] overflow-hidden p-3`}>
             <div className="relative">
                 <Link to={`/pdp/${id}`}>
                     <img
